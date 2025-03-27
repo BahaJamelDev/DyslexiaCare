@@ -12,13 +12,13 @@
                 <img src="assets/images/logoproto.png" alt="DyslexiaCare Logo">
             </div>
             <ul class="nav-links">
-                <li><a href="#">Accueil</a></li>
-                <li><a href="#">Analyser la dyslexie</a></li>
-                <li><a href="#">Exercices et Ressources</a></li>
-                <li><a href="#">DyslexiaCare</a></li>
-                <li><a href="#">À propos</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
+                <li><a routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Accueil</a></li>
+                <li><a routerLink="/analyse" routerLinkActive="active">Analyser la dyslexie</a></li>
+                <li><a routerLink="/exercices" routerLinkActive="active">Exercices et Ressources</a></li>
+                <li><a routerLink="/dyslexiacare" routerLinkActive="active">DyslexiaCare</a></li>
+                <li><a routerLink="/a-propos" routerLinkActive="active">À propos</a></li>
+                <li><a routerLink="/contact" routerLinkActive="active">Contact</a></li>
+              </ul>
             <a href="#" class="login-btn">Login</a>
         </nav>
     </header>
@@ -31,3 +31,4 @@
     </section>
 </body>
 </html>
+

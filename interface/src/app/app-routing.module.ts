@@ -1,20 +1,25 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
+import { AProposComponent } from './components/a-propos/a-propos.component';
 import { HomeComponent } from './components/home/home.component';
-
 const routes: Routes = [
-  { path : 'home' , component : HomeComponent} 
+  {path :'' , component : HomeComponent},
+  {path : 'home' , component : HomeComponent},
+  { path: 'a-propos', component: AProposComponent },
+  { path: '**', redirectTo: '/home', pathMatch: 'full' }
+
 ];
 
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, {
-      // Optional configurations for Angular 15
-      useHash: false, // Whether to use hash-based routing
-      initialNavigation: 'enabledBlocking', // Controls initial navigation behavior
-      scrollPositionRestoration: 'enabled' 
-    })
+      useHash: false,
+      initialNavigation: 'enabledBlocking',
+      scrollPositionRestoration: 'enabled'
+    }),
+    RouterOutlet // Add RouterOutlet to imports
   ],
-  exports: [RouterModule]
+  exports: [RouterModule, RouterOutlet] // Export RouterOutlet
 })
 export class AppRoutingModule { }
