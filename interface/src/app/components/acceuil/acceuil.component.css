@@ -1,0 +1,56 @@
+.homepage-container {
+    font-family: 'OpenDyslexic', Arial, sans-serif;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: #f0f4f8;
+  }
+
+  .hero-section {
+    text-align: center;
+    padding: 4rem 0;
+    background: linear-gradient(135deg, #e6f2ff 0%, #d1e8ff 100%);
+    border-radius: 15px;
+  }
+
+  .hero-content h1 {
+    color: #2c3e50;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  .hero-content p {
+    color: #34495e;
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .cta-button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .cta-button:hover {
+    background-color: #2980b9;
+  }
+
+  .features {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3rem;
+  }
+
+  .feature {
+    text-align: center;
+    background-color: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    width: 30%;
+  }

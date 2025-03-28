@@ -9,6 +9,9 @@ import { provideRouter } from '@angular/router';
 import { AppComponent } from 'src/app/app.component';
 import { HomeComponent } from 'src/app/components/home/home.component';
 import { AProposComponent } from 'src/app/components/a-propos/a-propos.component';
+import { ContactComponent } from './app/components/contact/contact.component';
+import { AcceuilComponent } from './app/components/acceuil/acceuil.component';
+import { LoginComponent } from './app/components/login/login.component';
 
 
 if (environment.production) {
@@ -23,17 +26,22 @@ platformBrowserDynamic().bootstrapModule(AppModule)
       provideRouter([
         { 
           path: '', 
-          component: HomeComponent 
+          component: AcceuilComponent
+        },
+        { path : 'home' ,
+          component : HomeComponent
         },
         { 
           path: 'a-propos', 
           component: AProposComponent 
         },
-        // Ajoutez cette redirection pour les routes inconnues
-        { 
-          path: '**', 
-          redirectTo: '' 
+        { path : 'contact' , 
+          component : ContactComponent
+        } ,
+        {path : 'login' ,
+          component :  LoginComponent
         }
+        // Ajoutez cette redirection pour les routes inconnues
       ])
     ]
   }).catch(err => console.error(err));

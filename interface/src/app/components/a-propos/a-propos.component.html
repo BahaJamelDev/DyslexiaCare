@@ -1,32 +1,31 @@
-<header>
+<body>
+<header> 
     <nav class="navbar">
         <div class="logo">
             <img src="assets/images/logoproto.png" alt="DyslexiaCare Logo">
         </div>
         <ul class="nav-links">
-            <li><a routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Accueil</a></li>
+            <li><a routerLink="/home" routerLinkActive="active">Accueil</a></li>
             <li><a routerLink="/analyse" routerLinkActive="active">Analyser la dyslexie</a></li>
             <li><a routerLink="/exercices" routerLinkActive="active">Exercices et Ressources</a></li>
             <li><a routerLink="/dyslexiacare" routerLinkActive="active">DyslexiaCare</a></li>
             <li><a routerLink="/a-propos" routerLinkActive="active">À propos</a></li>
             <li><a routerLink="/contact" routerLinkActive="active">Contact</a></li>
         </ul>
-        <a href="#" class="login-btn">Login</a>
     </nav>
 </header>
 
-<!-- Contenu de la page "À propos" -->
-<section class="container mt-4">
+<section class="container">
     <div class="about-section">
         <div class="section-content">
             <h2>Pourquoi ce projet ?</h2>
             <p>DyslexiaCare a été conçu pour faciliter le dépistage précoce de la dyslexie et proposer des exercices adaptés aux enfants.</p>
         </div>
-        <img src="assets/images/apropos2.webp" alt="Enfant heureux lisant un livre" class="section-image">
+        <img src="assets/images/apropos2.webp" alt="Enfant heureux lisant un livre">
     </div>
 
     <div class="about-section reverse">
-        <img src="assets/images/standbydyslexia.png" alt="Processus d'analyse de la dyslexie" class="section-image">
+        <img src="assets/images/standbydyslexia.png" alt="Processus d'analyse de la dyslexie">
         <div class="section-content">
             <h2>Comment ça marche ?</h2>
             <p>Notre intelligence artificielle analyse les réponses des enfants pour identifier des schémas dyslexiques et proposer des solutions éducatives adaptées.</p>
@@ -38,11 +37,11 @@
             <h2>Notre équipe</h2>
             <p>Nous sommes une équipe passionnée par l'éducation et la technologie, dédiée à aider les enfants à surmonter leurs difficultés d'apprentissage.</p>
         </div>
-        <img src="assets/images/medicalteam.jfif" alt="Équipe DyslexiaCare travaillant ensemble" class="section-image">
+        <img src="assets/images/medicalteam.jfif" alt="Équipe DyslexiaCare">
     </div>
 
     <div class="about-section reverse">
-        <img src="assets/images/docteurs.jpg" alt="Objectifs de DyslexiaCare" class="section-image">
+        <img src="assets/images/docteurs.jpg" alt="Objectifs de DyslexiaCare">
         <div class="section-content">
             <h2>Nos objectifs</h2>
             <ul>
@@ -58,14 +57,13 @@
             <h2>Technologies utilisées</h2>
             <p>Nous utilisons des algorithmes d'intelligence artificielle pour assurer un diagnostic précis et efficace.</p>
         </div>
-        <img src="assets/images/medicalai.jpg" alt="Technologies utilisées par DyslexiaCare" class="section-image">
+        <img src="assets/images/medicalai.jpg" alt="Technologies utilisées par DyslexiaCare">
     </div>
 
     <div class="contact-section">
         <h2>Contactez-nous</h2>
         <p>Vous souhaitez en savoir plus ou contribuer à notre projet ? N'hésitez pas à nous contacter !</p>
-        <div class="btn-container">
-            <button class="contact-btn">Nous contacter</button>
-          </div>
+        <button class="contact-btn" routerLink="/contact" routerLinkActive="active">Nous contacter</button>
     </div>
 </section>
+</body>
