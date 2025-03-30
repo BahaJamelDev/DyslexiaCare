@@ -1,69 +1,182 @@
-<div class="container">
-    <nav>
-        <div class="logo">DyslexiaCare</div>
-        <ul>
-            <li><a routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Accueil</a></li>
-            <li><a routerLink="#" routerLinkActive="active">Analyser la dyslexie</a></li>
-            <li><a routerLink="#" routerLinkActive="active">Exercices et Ressources</a></li>
-            <li> <a routerLink="/a-propos" routerLinkActive="active"> À propos </a></li>
-            <li><a routerLink="/contact" routerLinkActive="active">Contact</a></li>
-        </ul>
-    </nav>
+<body class="dyslexia-friendly">
 
-    <div class="contact-section">
-        <div class="contact-info">
-            <h2>Contact Information</h2>
-            <p>Say something to start a live chat!</p>
-            <div class="info-item">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                </svg>
-                <span>+216 96818563</span>
-            </div>
-            <div class="info-item">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                    <polyline points="22,6 12,13 2,6"></polyline>
-                </svg>
-                <span>Dyslexiacare&#64;gmail.com</span>
-            </div>
-            <div class="info-item">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                    <circle cx="12" cy="10" r="3"></circle>
-                </svg>
-                <span>132 Dartmouth Street Boston, Massachusetts 02156, United States</span>
-            </div>
-            <div class="social-icons">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-                </svg>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                </svg>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
-                </svg>
+    <!-- En-tête -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">Dyslexia<span>Care</span></a>
+                <button class="mobile-menu-btn" aria-label="Menu">☰</button>
+                <nav>
+                    <ul>
+                        <li><a routerLink="/home" routerLinkActive="active">Accueil</a></li>
+                        <li><a routerLink="/login" routerLinkActive="active">Analyser la dyslexie</a></li>
+                        <li><a routerLink="/exercice" routerLinkActive="active">Exercices Et Ressources</a></li>
+                        <li><a routerLink="/a-propos" routerLinkActive="active">À propos</a></li>
+                        <li><a routerLink="/contact" routerLinkActive="active">Contact</a></li>
+                    </ul>
+                </nav>
             </div>
         </div>
-        <div class="contact-form">
-            <h1>Contact Us</h1>
-            <p>Any question or remarks? Just write us a message!</p>
-            <form>
-                <div class="form-group">
-                    <input type="text" placeholder="First Name" name="first_name">
-                    <input type="text" placeholder="Last Name" name="last_name">
+    </header>
+
+    <!-- Contenu principal -->
+    <main>
+        <div class="container">
+            <h1 class="page-title">Contactez-nous</h1>
+            
+            <div class="contact-section">
+                <div class="contact-info">
+                    <h2 class="section-title">Nos coordonnées</h2>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div class="contact-text">
+                            <h4>Adresse</h4>
+                            <p>123 Avenue des Lettres<br>75001 Paris, France</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div class="contact-text">
+                            <h4>Téléphone</h4>
+                            <p>+33 1 23 45 67 89</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">✉️</div>
+                        <div class="contact-text">
+                            <h4>Email</h4>
+                            <p>contactdyslexiacare.fr</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">🕒</div>
+                        <div class="contact-text">
+                            <h4>Heures d'ouverture</h4>
+                            <p>Lundi - Vendredi: 9h - 18h<br>Samedi: 10h - 15h<br>Dimanche: Fermé</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <input type="email" placeholder="Email" name="email" class="form-control">
-                    <input type="tel" placeholder="Phone Number" name="phone" class="form-control">
+                
+                <div class="contact-form">
+                    <h2 class="section-title">Envoyez-nous un message</h2>
+                    
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Nom complet <span>*</span></label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email <span>*</span></label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Téléphone</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Sujet <span>*</span></label>
+                            <select id="subject" name="subject" required>
+                                <option value="">Sélectionnez un sujet</option>
+                                <option value="information">Demande d'information</option>
+                                <option value="appointment">Prise de rendez-vous</option>
+                                <option value="resources">Ressources éducatives</option>
+                                <option value="partnership">Proposition de partenariat</option>
+                                <option value="other">Autre</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message <span>*</span></label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        
+                        <div class="form-footer">
+                            <span class="required-text"><span>*</span> Champs obligatoires</span>
+                            <button type="submit">Envoyer le message</button>
+                        </div>
+                    </form>
                 </div>
-    
-                <textarea placeholder="Write your message..." class="form-control" rows="6"></textarea>
-                <button type="submit" class="send-btn">Send Message</button>
-            </form>
+            </div>
         </div>
-    </div>
-</div>
+    </main>
+
+    <!-- Pied de page -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>DyslexiaCare</h3>
+                    <p>DyslexiaCare est dédié à aider les personnes atteintes de dyslexie à exploiter tout leur potentiel grâce à des ressources adaptées et un soutien personnalisé.</p>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook">f</a>
+                        <a href="#" aria-label="Twitter">t</a>
+                        <a href="#" aria-label="Instagram">i</a>
+                        <a href="#" aria-label="LinkedIn">l</a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Liens rapides</h3>
+                    <ul>
+                        <li><a routerLink="/home" routerLinkActive="active">Accueil</a></li>
+                        <li><a routerLink="" routerLinkActive="active">Analyser la dyslexie</a></li>
+                        <li><a routerLink="" routerLinkActive="active">Exercices Et Ressources</a></li>
+                        <li><a routerLink="/a-propos" routerLinkActive="active">À propos</a></li>
+                        <li><a routerLink="/contact" routerLinkActive="active">Contact</a></li>
+                    </ul>
+                </div>
+                
+                
+                <div class="footer-column">
+                    <h3>Newsletter</h3>
+                    <p>Inscrivez-vous pour recevoir nos actualités et ressources.</p>
+                    <form class="newsletter-form">
+                        <div class="form-group">
+                            <input type="email" placeholder="Votre email" required>
+                        </div>
+                        <button type="submit">S'abonner</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 DyslexiaCare. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Script pour le menu mobile
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            const nav = document.querySelector('nav ul');
+            nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        // Fonctionnalité d'accessibilité (mode sombre)
+        document.querySelector('.accessibility-toggle button:first-child').addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+        });
+
+        // Fonctionnalité d'accessibilité (taille du texte)
+        document.querySelector('.accessibility-toggle button:last-child').addEventListener('click', function() {
+            document.body.classList.toggle('large-text');
+        });
+
+        // Validation du formulaire
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Ici, vous ajouteriez normalement le code pour traiter le formulaire
+            // Par exemple, envoyer les données à un serveur via AJAX
+            
+            alert('Merci pour votre message ! Nous vous contacterons bientôt.');
+            this.reset();
+        });
+    </script>

@@ -1,0 +1,718 @@
+:root {
+    --primary-color: #4a86e8;
+    --secondary-color: #6aa84f;
+    --accent-color: #f6b26b;
+    --light-accent: #ffebb8;
+    --background-color: #f9f9f9;
+    --card-color: #ffffff;
+    --text-color: #333333;
+    --error-color: #e06666;
+    --success-color: #6aa84f;
+    --footer-color: #0d3b66;
+    --category-1: #d0e0f7;
+    --category-2: #d7ecd2;
+    --category-3: #fde9d1;
+    --category-4: #e0d1fc;
+}
+
+/* Styles globaux */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'OpenDyslexic', 'Open Sans', Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    font-size: 16px;
+    letter-spacing: 0.5px;
+}
+
+/* Style adapté pour la dyslexie */
+.dyslexia-friendly {
+    line-height: 1.8;
+    letter-spacing: 0.5px;
+    word-spacing: 2px;
+}
+
+/* En-tête */
+header {
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.logo span {
+    color: var(--secondary-color);
+}
+
+/* Navigation */
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav li {
+    margin-left: 2rem;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 600;
+    transition: color 0.3s;
+    padding: 0.5rem;
+}
+
+nav a:hover, nav a.active {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+}
+
+/* Contenu principal */
+main {
+    padding: 3rem 0;
+}
+
+.page-title {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--primary-color);
+    font-size: 2.5rem;
+}
+
+.page-description {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    color: #666;
+    font-size: 1.1rem;
+}
+
+/* Filtres et recherche */
+.resources-filters {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+
+.filter-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.filter-title {
+    width: 100%;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+}
+
+.filter-button {
+    background-color: #f0f0f0;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: 'OpenDyslexic', 'Open Sans', Arial, sans-serif;
+}
+
+.filter-button:hover {
+    background-color: #e0e0e0;
+}
+
+.filter-button.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.search-bar {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.search-bar input {
+    flex: 1;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: 'OpenDyslexic', 'Open Sans', Arial, sans-serif;
+}
+
+.search-bar button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'OpenDyslexic', 'Open Sans', Arial, sans-serif;
+}
+
+/* Grille de ressources */
+.resources-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.resource-card {
+    background-color: var(--card-color);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+}
+
+.resource-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.card-category-tag {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.category-lecture {
+    background-color: var(--category-1);
+    color: #2c5aa0;
+}
+
+.category-ecriture {
+    background-color: var(--category-2);
+    color: #3c6e2b;
+}
+
+.category-phonetique {
+    background-color: var(--category-3);
+    color: #b67721;
+}
+
+.category-memoire {
+    background-color: var(--category-4);
+    color: #5e2eb6;
+}
+
+.resource-image {
+    height: 160px;
+    width: 100%;
+    background-color: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    font-size: 3rem;
+}
+
+.resource-content {
+    padding: 1.5rem;
+}
+
+.resource-title {
+    margin-bottom: 0.75rem;
+    color: var(--primary-color);
+    font-size: 1.3rem;
+}
+
+.resource-description {
+    color: #666;
+    margin-bottom: 1.25rem;
+    line-height: 1.6;
+}
+
+.resource-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    color: #888;
+}
+
+.resource-level {
+    display: flex;
+    align-items: center;
+}
+
+.level-indicator {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 6px;
+}
+
+.level-beginner {
+    background-color: var(--success-color);
+}
+
+.level-intermediate {
+    background-color: var(--accent-color);
+}
+
+.level-advanced {
+    background-color: var(--error-color);
+}
+
+.resource-cta {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn {
+    padding: 0.6rem 1.2rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-block;
+    transition: all 0.3s;
+    cursor: pointer;
+    font-family: 'OpenDyslexic', 'Open Sans', Arial, sans-serif;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #3d73c8;
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+}
+
+.btn-outline:hover {
+    background-color: rgba(74, 134, 232, 0.1);
+}
+
+.favorite-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ddd;
+    background-color: white;
+    color: #999;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.favorite-btn:hover {
+    color: var(--error-color);
+    border-color: var(--error-color);
+}
+
+.favorite-btn.active {
+    color: var(--error-color);
+    border-color: var(--error-color);
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    gap: 0.5rem;
+}
+
+.pagination-item {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    background-color: white;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.pagination-item:hover {
+    background-color: #f0f0f0;
+}
+
+.pagination-item.active {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+/* Section témoignages */
+.testimonials-section {
+    background-color: var(--light-accent);
+    padding: 3rem 0;
+    margin: 3rem 0;
+}
+
+.testimonials-title {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--primary-color);
+    font-size: 2rem;
+}
+
+.testimonial-card {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+
+.testimonial-content {
+    font-style: italic;
+    margin-bottom: 1rem;
+    position: relative;
+    padding: 0 1.5rem;
+}
+
+.testimonial-content::before,
+
+
+.testimonial-content::before {
+    top: -0.5rem;
+    left: -0.5rem;
+}
+
+
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    margin-top: 1.5rem;
+}
+
+.author-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #f0f0f0;
+    margin-right: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+}
+
+.author-info {
+    flex: 1;
+}
+
+.author-name {
+    font-weight: bold;
+    margin-bottom: 0.25rem;
+}
+
+.author-role {
+    color: #888;
+    font-size: 0.9rem;
+}
+
+/* Bannière d'aide */
+.help-banner {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    margin: 3rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.help-content {
+    flex: 1;
+}
+
+.help-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.help-text {
+    margin-bottom: 1rem;
+    max-width: 600px;
+}
+
+.help-btn {
+    background-color: white;
+    color: var(--primary-color);
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s;
+    margin-left: 2rem;
+}
+
+.help-btn:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+/* Pied de page - Bleu foncé */
+footer {
+    background-color: var(--footer-color);
+    color: white;
+    padding: 2rem 0;
+    margin-top: 3rem;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.footer-column {
+    flex: 1;
+    min-width: 250px;
+    margin-bottom: 1.5rem;
+}
+
+.footer-column h3 {
+    margin-bottom: 1rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.footer-column h3::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 30px;
+    height: 2px;
+    background-color: var(--accent-color);
+}
+
+.footer-column ul {
+    list-style: none;
+}
+
+.footer-column li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-column a {
+    color: #ddd;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-column a:hover {
+    color: white;
+}
+
+.social-icons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.social-icons a {
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+}
+
+.social-icons a:hover {
+    background-color: var(--primary-color);
+}
+
+.copyright {
+    text-align: center;
+    padding-top: 1.5rem;
+    margin-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.9rem;
+    color: #aaa;
+}
+
+/* Mode responsive */
+@media (max-width: 768px) {
+    nav ul {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        z-index: 99;
+    }
+
+    nav li {
+        margin: 0;
+    }
+
+    nav a {
+        display: block;
+        padding: 1rem 2rem;
+    }
+
+    .mobile-menu-btn {
+        display: block;
+        font-size: 1.5rem;
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+
+    .help-banner {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .help-btn {
+        margin-left: 0;
+        margin-top: 1rem;
+    }
+
+    .resources-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (min-width: 769px) {
+    .mobile-menu-btn {
+        display: none;
+    }
+}
+
+/* Mode sombre / options d'accessibilité */
+.accessibility-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 100;
+    display: flex;
+    gap: 10px;
+}
+
+.toggle-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+}
+
+/* Mode sombre */
+body.dark-mode {
+    background-color: #222;
+    color: #eee;
+}
+
+body.dark-mode header,
+body.dark-mode .resources-filters,
+body.dark-mode .resource-card,
+body.dark-mode .testimonial-card {
+    background-color: #333;
+    color: #eee;
+}
+
+body.dark-mode .resource-title,
+body.dark-mode .page-title,
+body.dark-mode .section-title,
+body.dark-mode .testimonials-title {
+    color: #6da3ff;
+}
+
+body.dark-mode .resource-description,
+body.dark-mode .page-description {
+    color: #ccc;
+}
+
+body.dark-mode nav a {
+    color: #eee;
+}
+
+body.dark-mode .filter-button {
+    background-color: #444;
+    color: #eee;
+}
+
+body.dark-mode .filter-button:hover {
+    background-color: #555;
+}
+
+body.dark-mode .pagination-item {
+    background-color: #333;
+    border-color: #444;
+    color: #eee;
+}
+
+/* Texte large */
+body.large-text {
+    font-size: 18px;
+}
+
+body.large-text .page-title {
+    font-size: 3rem;
+}
+
+body.large-text .resource-title {
+    font-size: 1.5rem;
+}

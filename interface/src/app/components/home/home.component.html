@@ -6,21 +6,22 @@
     <title>DyslexiaCare</title>
 </head>
 <body>
-    <header>
-        <nav class="navbar">
-            <div class="logo">
-                <img src="assets/images/logoproto.png" alt="DyslexiaCare Logo">
-            </div>
-            <ul class="nav-links">
-                <li><a routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Accueil</a></li>
-                <li><a routerLink="/analyse" routerLinkActive="active">Analyser la dyslexie</a></li>
-                <li><a routerLink="/exercices" routerLinkActive="active">Exercices et Ressources</a></li>
-                <li><a routerLink="/dyslexiacare" routerLinkActive="active">DyslexiaCare</a></li>
-                <li><a routerLink="/a-propos" routerLinkActive="active">À propos</a></li>
-                <li><a routerLink="/contact" routerLinkActive="active">Contact</a></li>
-              </ul>
-        </nav>
-    </header>
+  <header>
+    <div class="container">
+        <div class="header-content">
+            <a href="index.html" class="logo">Dyslexia<span>Care</span></a>
+            <nav>
+                <ul>
+                    <li><a routerLink="/home" routerLinkActive="active">Accueil</a></li>
+                    <li><a routerLink="/login" routerLinkActive="active">Analyser la dyslexie</a></li>
+                    <li><a routerLink="/exercice" routerLinkActive="active">Exercices Et Ressources</a></li>
+                    <li><a routerLink="/a-propos" routerLinkActive="active">À propos</a></li>
+                    <li><a routerLink="/contact" routerLinkActive="active">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
     
     <section class="hero">
         <div class="hero-content">

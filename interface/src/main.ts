@@ -12,6 +12,7 @@ import { AProposComponent } from 'src/app/components/a-propos/a-propos.component
 import { ContactComponent } from './app/components/contact/contact.component';
 import { AcceuilComponent } from './app/components/acceuil/acceuil.component';
 import { LoginComponent } from './app/components/login/login.component';
+import { ExercicesComponent } from './app/components/exercices/exercices.component';
 
 
 if (environment.production) {
@@ -40,6 +41,9 @@ platformBrowserDynamic().bootstrapModule(AppModule)
         } ,
         {path : 'login' ,
           component :  LoginComponent
+        } , 
+        { path : 'exercice' ,
+          component : ExercicesComponent
         }
         // Ajoutez cette redirection pour les routes inconnues
       ])

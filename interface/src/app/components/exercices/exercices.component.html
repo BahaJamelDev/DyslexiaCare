@@ -1,0 +1,200 @@
+<body class="dyslexia-friendly">
+    <!-- Accessibilité -->
+    <div class="accessibility-toggle">
+        <button class="toggle-btn" title="Mode sombre" aria-label="Activer le mode sombre">
+            🌙
+        </button>
+        <button class="toggle-btn" title="Augmenter la taille du texte" aria-label="Augmenter la taille du texte">
+            A+
+        </button>
+    </div>
+
+    <!-- En-tête -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">Dyslexia<span>Care</span></a>
+                <button class="mobile-menu-btn" aria-label="Menu">☰</button>
+                <nav>
+                    <ul>
+                        <li><a routerLink="/home" routerLinkActive="active">Accueil</a></li>
+                        <li><a routerLink="/login" routerLinkActive="active" >Analyser la dyslexie</a></li>
+                        <li><a routerLink="/exercice" routerLinkActive="active" class="active">Exercices Et Ressources</a></li>
+                        <li><a routerLink="/a-propos" routerLinkActive="active">À propos</a></li>
+                        <li><a routerLink="/contact" routerLinkActive="active">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contenu principal -->
+    <main>
+        <div class="container">
+            <h1 class="page-title">Exercices et Ressources</h1>
+            <p class="page-description">Découvrez notre collection d'exercices et de ressources spécialement conçus pour aider les personnes dyslexiques à améliorer leurs compétences en lecture, écriture et plus encore.</p>
+            
+            <!-- Filtres et recherche -->
+            <div class="resources-filters">
+                <div class="filter-group">
+                    <div class="filter-title">Catégories :</div>
+                    <button class="filter-button active">Tous</button>
+                    <button class="filter-button">Lecture</button>
+                    <button class="filter-button">Écriture</button>
+                    <button class="filter-button">Phonétique</button>
+                    <button class="filter-button">Mémoire</button>
+                </div>
+                
+                <div class="filter-group">
+                    <div class="filter-title">Niveau :</div>
+                    <button class="filter-button active">Tous</button>
+                    <button class="filter-button">Débutant</button>
+                    <button class="filter-button">Intermédiaire</button>
+                    <button class="filter-button">Avancé</button>
+                </div>
+                
+                <div class="filter-group">
+                    <div class="filter-title">Format :</div>
+                    <button class="filter-button active">Tous</button>
+                    <button class="filter-button">PDF</button>
+                    <button class="filter-button">Interactif</button>
+                    <button class="filter-button">Vidéo</button>
+                    <button class="filter-button">Audio</button>
+                </div>
+                
+                <div class="search-bar">
+                    <input type="text" placeholder="Rechercher des ressources...">
+                    <button>Rechercher</button>
+                </div>
+            </div>
+            
+            <!-- Grille de ressources -->
+            <div class="resources-grid">
+                <!-- Carte ressource 1 -->
+                <div class="resource-card">
+                    <div class="card-category-tag category-lecture">Lecture</div>
+                    <div class="resource-image">📚</div>
+                    <div class="resource-content">
+                        <h3 class="resource-title">Lecture progressive</h3>
+                        <p class="resource-description">Exercices de lecture avec des textes adaptés et progression graduelle de la difficulté.</p>
+                        <div class="resource-meta">
+                            <span class="resource-format">PDF • 15 pages</span>
+                            <span class="resource-level">
+                                <span class="level-indicator level-beginner"></span>
+                                Débutant
+                            </span>
+                        </div>
+                        <div class="resource-cta">
+                            <a href="#" class="btn btn-primary">Télécharger</a>
+                            <button class="favorite-btn">❤</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Carte ressource 2 -->
+                <div class="resource-card">
+                    <div class="card-category-tag category-ecriture">Écriture</div>
+                    <div class="resource-image">✏️</div>
+                    <div class="resource-content">
+                        <h3 class="resource-title">Cahier d'exercices d'écriture</h3>
+                        <p class="resource-description">Exercices pratiques pour améliorer l'écriture et la formation des lettres.</p>
+                        <div class="resource-meta">
+                            <span class="resource-format">PDF • 20 pages</span>
+                            <span class="resource-level">
+                                <span class="level-indicator level-intermediate"></span>
+                                Intermédiaire
+                            </span>
+                        </div>
+                        <div class="resource-cta">
+                            <a href="#" class="btn btn-primary">Télécharger</a>
+                            <button class="favorite-btn">❤</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Carte ressource 3 -->
+                <div class="resource-card">
+                    <div class="card-category-tag category-phonetique">Phonétique</div>
+                    <div class="resource-image">🔊</div>
+                    <div class="resource-content">
+                        <h3 class="resource-title">Jeu de sons et syllabes</h3>
+                        <p class="resource-description">Application interactive pour travailler la conscience phonologique et la reconnaissance des sons.</p>
+                        <div class="resource-meta">
+                            <span class="resource-format">Interactif • En ligne</span>
+                            <span class="resource-level">
+                                <span class="level-indicator level-beginner"></span>
+                                Débutant
+                            </span>
+                        </div>
+                        <div class="resource-cta">
+                            <a href="#" class="btn btn-primary">Accéder</a>
+                            <button class="favorite-btn active">❤</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Carte ressource 4 -->
+                <div class="resource-card">
+                    <div class="card-category-tag category-memoire">Mémoire</div>
+                    <div class="resource-image">🧠</div>
+                    <div class="resource-content">
+                        <h3 class="resource-title">Exercices de mémoire visuelle</h3>
+                        <p class="resource-description">Activités pour renforcer la mémoire visuelle et la reconnaissance des mots.</p>
+                        <div class="resource-meta">
+                            <span class="resource-format">PDF • 12 pages</span>
+                            <span class="resource-level">
+                                <span class="level-indicator level-advanced"></span>
+                                Avancé
+                            </span>
+                        </div>
+                        <div class="resource-cta">
+                            <a href="#" class="btn btn-primary">Télécharger</a>
+                            <button class="favorite-btn">❤</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Carte ressource 5 -->
+                <div class="resource-card">
+                    <div class="card-category-tag category-lecture">Lecture</div>
+                    <div class="resource-image">📕</div>
+                    <div class="resource-content">
+                        <h3 class="resource-title">Histoires adaptées</h3>
+                        <p class="resource-description">Collection d'histoires courtes avec mise en forme adaptée pour les lecteurs dyslexiques.</p>
+                        <div class="resource-meta">
+                            <span class="resource-format">PDF • 30 pages</span>
+                            <span class="resource-level">
+                                <span class="level-indicator level-intermediate"></span>
+                                Intermédiaire
+                            </span>
+                        </div>
+                        <div class="resource-cta">
+                            <a href="#" class="btn btn-primary">Télécharger</a>
+                            <button class="favorite-btn">❤</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Carte ressource 6 -->
+                <div class="resource-card">
+                    <div class="card-category-tag category-ecriture">Écriture</div>
+                    <div class="resource-image">📝</div>
+                    <div class="resource-content">
+                        <h3 class="resource-title">Guide orthographique</h3>
+                        <p class="resource-description">Méthodes et astuces pour mémoriser l'orthographe des mots difficiles.</p>
+                        <div class="resource-meta">
+                            <span class="resource-format">PDF • 25 pages</span>
+                            <span class="resource-level">
+                                <span class="level-indicator level-advanced"></span>
+                                Avancé
+                            </span>
+                        </div>
+                        <div class="resource-cta">
+                            <a href="#" class="btn btn-primary">Télécharger</a>
+                            <button class="favorite-btn">❤</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Pagination -->
