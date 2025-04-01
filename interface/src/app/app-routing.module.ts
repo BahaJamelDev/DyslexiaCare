@@ -1,19 +1,24 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { RouterOutlet } from '@angular/router';
 import { AProposComponent } from './components/a-propos/a-propos.component';
 import { HomeComponent } from './components/home/home.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { AcceuilComponent } from './components/acceuil/acceuil.component';
-import { LoginComponent } from './components/login/login.component';
+import { RegistrationComponent } from './components/registration/registration.component';
 import { ExercicesComponent } from './components/exercices/exercices.component';
+import { LoginComponent } from './components/login/login.component';
+import { TestComponent } from './components/test/test.component';
+
 const routes: Routes = [
   {path :'' , component : AcceuilComponent},
   {path : 'home' , component : HomeComponent},
   { path: 'a-propos', component: AProposComponent },
   {path : 'contact' , component : ContactComponent} ,
+  {path : 'register' , component : RegistrationComponent}, 
+  {path : 'exercice' , component : ExercicesComponent} , 
   {path : 'login' , component : LoginComponent} , 
-  {path : 'exercice' , component : ExercicesComponent}
+  {path : 'test' , component : TestComponent}
 ];
 
 @NgModule({

@@ -1,48 +1,43 @@
-import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms'; // 📌 Importer ReactiveFormsModule
-
-
+import { Router,RouterModule } from '@angular/router';
+import { SupabaseService } from 'src/app/services/supabase.service';
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 @Component({
   standalone : true ,
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'] , 
-  imports : [CommonModule , RouterModule , ReactiveFormsModule]
+  imports : [CommonModule, ReactiveFormsModule, RouterModule ]
 })
 export class LoginComponent {
-  registerForm: FormGroup;
-  showPassword: boolean = false;
-  registrationSuccess: boolean = false;
+  loginForm!: FormGroup;
+  isLoading = false;
+  errorMessage = '';
 
-  constructor(private fb: FormBuilder) {
-    this.registerForm = this.fb.group({
-      name: ['', Validators.required],
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private supabase: SupabaseService
+  ) {
+    this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
-      confirmPassword: ['']
-    }, { validators: this.passwordMatchValidator });
+      password: ['', Validators.required]
+    });
   }
 
-  // Vérification de la correspondance des mots de passe
-  passwordMatchValidator(form: FormGroup) {
-    return form.get('password')?.value === form.get('confirmPassword')?.value
-      ? null : { passwordMismatch: true };
-  }
+  async onSubmit() {
+    if (this.loginForm.invalid) return;
 
-  // Basculer l'affichage du mot de passe
-  togglePassword() {
-    this.showPassword = !this.showPassword;
-  }
+    const { email, password } = this.loginForm.value;
+    const { user, error } = await this.supabase.signIn(email!, password!);
 
-  // Soumettre le formulaire
-  onSubmit() {
-    if (this.registerForm.valid) {
-      this.registrationSuccess = true;
-      this.registerForm.reset();
+    if (error) {
+      this.errorMessage = error.message;
+    } else {
+      this.router.navigate(['/test']);
     }
   }
-
+  
 }

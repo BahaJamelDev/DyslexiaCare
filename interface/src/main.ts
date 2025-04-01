@@ -11,8 +11,10 @@ import { HomeComponent } from 'src/app/components/home/home.component';
 import { AProposComponent } from 'src/app/components/a-propos/a-propos.component';
 import { ContactComponent } from './app/components/contact/contact.component';
 import { AcceuilComponent } from './app/components/acceuil/acceuil.component';
-import { LoginComponent } from './app/components/login/login.component';
+import  {RegistrationComponent } from './app/components/registration/registration.component';
 import { ExercicesComponent } from './app/components/exercices/exercices.component';
+import { LoginComponent } from './app/components/login/login.component';
+import { TestComponent } from './app/components/test/test.component';
 
 
 if (environment.production) {
@@ -39,12 +41,17 @@ platformBrowserDynamic().bootstrapModule(AppModule)
         { path : 'contact' , 
           component : ContactComponent
         } ,
-        {path : 'login' ,
-          component :  LoginComponent
+        {path : 'register' ,
+          component :  RegistrationComponent
+         
         } , 
         { path : 'exercice' ,
           component : ExercicesComponent
-        }
+        } , 
+        {
+          path : 'login' , component : LoginComponent
+        } , 
+        {path : 'test' , component : TestComponent}
         // Ajoutez cette redirection pour les routes inconnues
       ])
     ]

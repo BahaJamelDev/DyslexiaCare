@@ -1,52 +1,19 @@
-<div class="register-container">
-    <div class="register-card">
-      <h2>Inscription</h2>
-      
-      <!-- Affichage du message de succès -->
-      <div *ngIf="registrationSuccess" class="success-message">
-        🎉 Inscription réussie ! Vous pouvez maintenant vous connecter.
-      </div>
-  
-      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-        <div class="form-group">
-          <label for="name">Nom complet</label>
-          <input type="text" id="name" formControlName="name" placeholder="Entrez votre nom complet">
-          <small class="error" *ngIf="registerForm.get('name')?.invalid && registerForm.get('name')?.touched">
-            Le nom est requis.
-          </small>
+<body>
+        <div class="login-container">
+            <h2>Login</h2>
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <div>
+                <label>Email:</label>
+                <input type="email" formControlName="email" required />
+            </div>
+            <div>
+                <label>Password:</label>
+                <input type="password" formControlName="password" required />
+            </div>
+            <button type="submit" [disabled]="isLoading">Login</button>
+            </form>
+            
+            <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
         </div>
-  
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" formControlName="email" placeholder="Entrez votre email">
-          <small class="error" *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched">
-            Entrez un email valide.
-          </small>
-        </div>
-  
-        <div class="form-group">
-          <label for="password">Mot de passe</label>
-          <div class="password-wrapper">
-            <input [type]="showPassword ? 'text' : 'password'" id="password" formControlName="password" placeholder="Créez un mot de passe">
-            <button type="button" (click)="togglePassword()" class="toggle-password">👁️</button>
-          </div>
-          <small class="error" *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">
-            Le mot de passe doit avoir au moins 6 caractères.
-          </small>
-        </div>
-  
-        <div class="form-group">
-          <label for="confirm-password">Confirmez le mot de passe</label>
-          <input type="password" id="confirm-password" formControlName="confirmPassword" placeholder="Confirmez votre mot de passe">
-          <small class="error" *ngIf="registerForm.hasError('passwordMismatch') && registerForm.get('confirmPassword')?.touched">
-            Les mots de passe ne correspondent pas.
-          </small>
-        </div>
-  
-        <button type="submit" class="register-btn" [disabled]="registerForm.invalid">S'inscrire</button>
-  
-        <p class="login-link">Déjà un compte ? <a href="#">Connectez-vous</a></p>
-      </form>
-    </div>
-  </div>
+</body>
   

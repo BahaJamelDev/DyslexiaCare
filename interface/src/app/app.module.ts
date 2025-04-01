@@ -2,14 +2,13 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms'; // 📌 Importer ReactiveFormsModule
 import { AppRoutingModule } from './app-routing.module';
-import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
-import { getStorage, provideStorage } from '@angular/fire/storage';
-import { environment } from '../environments/environment';
+import { TestComponent } from './components/test/test.component';
 
-const app = initializeApp(environment.firebase);
-const storage = getStorage(app);
+
 @NgModule({
   declarations: [
+  
+    TestComponent
   ],
   imports: [
     BrowserModule,
