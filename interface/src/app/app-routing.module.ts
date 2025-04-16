@@ -8,17 +8,18 @@ import { AcceuilComponent } from './components/acceuil/acceuil.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { ExercicesComponent } from './components/exercices/exercices.component';
 import { LoginComponent } from './components/login/login.component';
-import { TestComponent } from './components/test/test.component';
+import { DyslexiaTestComponent } from './components/dyslexia-test/dyslexia-test.component';
 
-const routes: Routes = [
+
+export const routes: Routes = [
   {path :'' , component : AcceuilComponent},
   {path : 'home' , component : HomeComponent},
   { path: 'a-propos', component: AProposComponent },
   {path : 'contact' , component : ContactComponent} ,
   {path : 'register' , component : RegistrationComponent}, 
   {path : 'exercice' , component : ExercicesComponent} , 
-  {path : 'login' , component : LoginComponent} , 
-  {path : 'test' , component : TestComponent}
+  {path : 'login' , component : LoginComponent} ,
+  {path : 'test' , component:DyslexiaTestComponent}
 ];
 
 @NgModule({
@@ -30,6 +31,8 @@ const routes: Routes = [
     }),
     RouterOutlet // Add RouterOutlet to imports
   ],
-  exports: [RouterModule, RouterOutlet] // Export RouterOutlet
+  exports: [RouterModule, RouterOutlet ] // Export RouterOutlet
 })
+
+
 export class AppRoutingModule { }

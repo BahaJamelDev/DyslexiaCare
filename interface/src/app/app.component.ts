@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({

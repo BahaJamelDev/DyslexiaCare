@@ -21,6 +21,8 @@
     "@supabase/supabase-js": "^2.49.4",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
+    "deep-chat": "^2.1.1",
+    "ngx-toastr": "^19.0.0",
     "open-dyslexic": "^1.0.3",
     "rxjs": "^7.5.0",
     "tslib": "^2.3.0",

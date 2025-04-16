@@ -14,7 +14,10 @@ import { AcceuilComponent } from './app/components/acceuil/acceuil.component';
 import  {RegistrationComponent } from './app/components/registration/registration.component';
 import { ExercicesComponent } from './app/components/exercices/exercices.component';
 import { LoginComponent } from './app/components/login/login.component';
-import { TestComponent } from './app/components/test/test.component';
+import { DyslexiaTestComponent } from './app/components/dyslexia-test/dyslexia-test.component';
+import { provideHttpClient } from '@angular/common/http';
+
+
 
 
 if (environment.production) {
@@ -50,10 +53,11 @@ platformBrowserDynamic().bootstrapModule(AppModule)
         } , 
         {
           path : 'login' , component : LoginComponent
-        } , 
-        {path : 'test' , component : TestComponent}
-        // Ajoutez cette redirection pour les routes inconnues
-      ])
+        } ,
+        {path : 'test' ,component : DyslexiaTestComponent} 
+       
+      ]),
+      provideHttpClient()
     ]
   }).catch(err => console.error(err));
 
