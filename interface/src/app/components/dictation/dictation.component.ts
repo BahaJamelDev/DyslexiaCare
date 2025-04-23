@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import  { Component } from '@angular/core';
 import { DictationService } from 'src/app/services/dictation.service';
-import {RouterModule} from "@angular/router";
-import {CommonModule} from "@angular/common";
-import {FormsModule} from "@angular/forms";
+import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-dictation',
@@ -12,42 +12,38 @@ import {FormsModule} from "@angular/forms";
   imports: [CommonModule, RouterModule, FormsModule]
 })
 export class DictationComponent {
-  words: string[] = [];
-  inputs: string[] = new Array(10).fill('');
+  words: string[] = [];           // will hold real words once loaded
+  inputs: string[] = [];          // always 10 slots
   score: number | null = null;
-
-  speaking: boolean = false;
-  currentWordIndex: number = -1;
-  statusMessage: string = '';
+  statusMessage = '';
 
   constructor(private dictationService: DictationService) {}
 
   startDictation() {
-    this.statusMessage = '🔄 Loading words...';
+    // 1) Prepare a 10-row table immediately
+    this.inputs = new Array(10).fill('');
+    this.words  = new Array(10).fill('');   // placeholders so readWords can still index
+    this.score = null;
+    this.statusMessage = '🔄 Loading words… (table ready, start typing!)';
+
+    // 2) Fetch the real words
     this.dictationService.getWords().subscribe(res => {
-      this.words = res.words;
-      this.inputs = new Array(10).fill('');
-      this.score = null;
-      this.currentWordIndex = -1;
-      this.statusMessage = '✅ Dictation in progress...';
-      this.speaking = true;
+      this.words = res.words;               // assume length 10
+      this.statusMessage = '✅ Dictation in progress…';
       this.readWords();
     });
   }
 
   async readWords() {
     for (let i = 0; i < this.words.length; i++) {
-      this.currentWordIndex = i;
       this.speak(this.words[i]);
-      await this.delay(5000); // wait 5 sec per word
+      await this.delay(5000);
     }
-    this.speaking = false;
-    this.statusMessage = '✅ Dictation complete. You can now type your answers.';
+    this.statusMessage = '✅ Dictation complete. Review & submit when ready.';
   }
 
   speak(text: string) {
-    const msg = new SpeechSynthesisUtterance();
-    msg.text = text;
+    const msg = new SpeechSynthesisUtterance(text);
     msg.lang = 'en-GB';
     msg.rate = 0.8;
     speechSynthesis.speak(msg);
@@ -58,9 +54,22 @@ export class DictationComponent {
   }
 
   submit() {
-    this.dictationService.submitDictation(this.words, this.inputs).subscribe(res => {
-      this.score = res.levenshtein_score;
-      this.statusMessage = '✅ Test complete. You can review your score.';
+  this.dictationService.submitDictation(this.words, this.inputs)
+    .subscribe(_ => {
+      // 1) Count exact matches (case-sensitive; for case-insensitive use .toLowerCase())
+      let correctCount: number;
+      correctCount = this.words
+        .map((w, i) => w === this.inputs[i])
+        .filter(isCorrect => isCorrect).length;
+
+      // 2) Assign that count directly as your score (0–10)
+      this.score = correctCount;
+
+      this.statusMessage = '✅ Test complete. Your score is ready.';
     });
+}
+  // trackBy to keep Angular from ever re-creating rows
+  trackByIndex(i: number) {
+    return i;
   }
 }

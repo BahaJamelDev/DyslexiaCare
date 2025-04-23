@@ -1,98 +1,89 @@
-.dictation-wrapper {
+/* CSS pour le composant de dictée compatible avec la page d'accueil */
+.container {
+  font-family: 'OpenDyslexic', Arial, sans-serif;
   max-width: 800px;
-  margin: 3rem auto;
-  padding: 2rem;
+  margin: 0 auto;
+  padding: 1.5rem;
   background-color: #ffffff;
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
-  font-family: 'Open Sans', Arial, sans-serif;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 h2 {
-  text-align: center;
-  color: #3498db;
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
-
-.status-message {
-  text-align: center;
-  font-size: 1.1rem;
   color: #2c3e50;
-  margin: 1.5rem 0;
-  font-weight: 600;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
 }
 
-.word-progress {
-  text-align: center;
-  color: #e67e22;
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
+button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.25rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: 'OpenDyslexic', Arial, sans-serif;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+  margin: 1rem 0;
 }
 
-.inputs {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  margin-top: 1rem;
+button:hover {
+  background-color: #2980b9;
+}
+
+button:disabled {
+  background-color: #95a5a6;
+  cursor: not-allowed;
+}
+
+.dictation-form {
+  margin-top: 1.5rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+}
+
+th, td {
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+th {
+  background-color: #f0f4f8;
+  font-weight: bold;
+  color: #2c3e50;
 }
 
 input {
-  padding: 0.75rem;
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-family: 'OpenDyslexic', Arial, sans-serif;
   font-size: 1rem;
-  border-radius: 10px;
-  border: 1px solid #ccc;
-  transition: 0.3s;
 }
 
 input:focus {
   border-color: #3498db;
-  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
   outline: none;
+  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
 }
 
-.primary-btn {
-  background-color: #3498db;
-  color: white;
-  padding: 0.8rem 2rem;
-  font-size: 1rem;
-  border: none;
-  border-radius: 30px;
-  font-weight: bold;
-  cursor: pointer;
-  display: inline-block;
-  transition: background-color 0.3s ease, transform 0.2s;
-  margin: 1rem 0;
-}
-
-.primary-btn:hover {
-  background-color: #2980b9;
-  transform: scale(1.03);
-}
-
-.primary-btn:disabled {
-  background-color: #bdc3c7;
-  cursor: not-allowed;
-}
-
-.score-box {
-  background-color: #ecf0f1;
-  border-left: 6px solid #2ecc71;
-  padding: 1.5rem;
-  margin-top: 2rem;
+.result {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background-color: #f0f4f8;
+  border-radius: 5px;
   text-align: center;
-  border-radius: 12px;
-  font-size: 1.2rem;
-  color: #2c3e50;
 }
 
-@media (max-width: 768px) {
-  .inputs {
-    grid-template-columns: 1fr;
-  }
-
-  .primary-btn {
-    width: 100%;
-    text-align: center;
-  }
+h3 {
+  color: #2c3e50;
+  margin: 0.5rem 0;
 }
