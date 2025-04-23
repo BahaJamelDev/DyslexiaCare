@@ -10,12 +10,15 @@ import { provideRouter } from '@angular/router';
 import { AppComponent } from './app.component';
 import {HttpClientModule} from "@angular/common/http";
 import { DictationComponent } from './components/dictation/dictation.component';
+import { RecommendationComponent } from './components/recommendation/recommendation.component';
 
 
 
 
 @NgModule({
   declarations: [
+
+
   ],
   imports: [
     FormsModule,

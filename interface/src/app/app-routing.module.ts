@@ -11,6 +11,7 @@ import { LoginComponent } from './components/login/login.component';
 import { DyslexiaTestComponent } from './components/dyslexia-test/dyslexia-test.component';
 import {DictationComponent} from "./components/dictation/dictation.component";
 import {DyslexiaServicesComponent} from "./components/dyslexia-service/dyslexia-service.component";
+import {RecommendationComponent} from "./components/recommendation/recommendation.component";
 
 
 export const routes: Routes = [
@@ -23,7 +24,8 @@ export const routes: Routes = [
   {path : 'login' , component : LoginComponent} ,
   {path : 'test' , component:DyslexiaTestComponent},
   {path:'dictation' , component :DictationComponent} ,
-  {path : 'services', component:DyslexiaServicesComponent}
+  {path : 'services', component:DyslexiaServicesComponent} ,
+  {path : 'recommendation' , component:RecommendationComponent}
 ];
 
 @NgModule({

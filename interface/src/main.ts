@@ -18,6 +18,7 @@ import { DyslexiaTestComponent } from './app/components/dyslexia-test/dyslexia-t
 import {DictationComponent} from "./app/components/dictation/dictation.component";
 import { provideHttpClient } from '@angular/common/http';
 import {DyslexiaServicesComponent} from "./app/components/dyslexia-service/dyslexia-service.component";
+import {RecommendationComponent} from "./app/components/recommendation/recommendation.component";
 
 
 if (environment.production) {
@@ -56,7 +57,8 @@ platformBrowserDynamic().bootstrapModule(AppModule)
         } ,
         {path : 'test' ,component : DyslexiaTestComponent}  ,
         {path : 'dictation' , component : DictationComponent},
-        {path : 'services' , component : DyslexiaServicesComponent}
+        {path : 'services' , component : DyslexiaServicesComponent} ,
+        {path : 'recommendation' , component : RecommendationComponent}
 
       ]),
       provideHttpClient()

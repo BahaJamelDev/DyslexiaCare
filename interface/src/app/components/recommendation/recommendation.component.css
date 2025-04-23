@@ -1,0 +1,68 @@
+.exercise-page {
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.btn-group {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.primary-btn {
+  background-color: #3498db;
+  color: #fff;
+  padding: 0.6rem 1.5rem;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.primary-btn:hover {
+  background-color: #2980b9;
+}
+
+.exercise-block {
+  margin-top: 1.5rem;
+}
+
+.exercise-block input {
+  padding: 0.5rem;
+  width: 60%;
+  max-width: 300px;
+  margin-right: 0.5rem;
+}
+
+.word-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.word-btn {
+  background: #ecf0f1;
+  border: 1px solid #bdc3c7;
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.word-btn:hover {
+  background: #d0e8ff;
+}
+
+.feedback {
+  margin-top: 1rem;
+  font-weight: bold;
+}

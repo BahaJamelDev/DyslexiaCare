@@ -1,0 +1,44 @@
+<div class="exercise-page">
+  <h2>🧠 Practice Exercises</h2>
+  <p>Select one:</p>
+
+  <!-- Mode buttons -->
+  <div class="btn-group">
+    <button (click)="start('spelling')"   class="primary-btn">Spelling</button>
+    <button (click)="start('grammar')"    class="primary-btn">Grammar</button>
+    <button (click)="start('correction')" class="primary-btn">Self-Correct</button>
+  </div>
+
+  <hr/>
+
+  <!-- Spelling Scramble -->
+  <div *ngIf="mode === 'spelling'" class="exercise-block">
+    <p>Unscramble this word:</p>
+    <h3>{{ scrambledWord }}</h3>
+    <input [(ngModel)]="userInput" placeholder="Type the word here" />
+    <button class="primary-btn" (click)="checkSpelling()">Check</button>
+    <p class="feedback">{{ result }}</p>
+  </div>
+
+  <!-- Grammar Fix -->
+  <div *ngIf="mode === 'grammar'" class="exercise-block">
+    <p>Fix the sentence:</p>
+    <blockquote>{{ originalSentence }}</blockquote>
+    <input [(ngModel)]="userInput" placeholder="Your corrected sentence" />
+    <button class="primary-btn" (click)="checkGrammar()">Check</button>
+    <p class="feedback">{{ result }}</p>
+  </div>
+
+  <!-- Self-Correction -->
+  <div *ngIf="mode === 'correction'" class="exercise-block">
+    <p>Click the incorrect word:</p>
+    <div class="word-list">
+      <button *ngFor="let w of sentenceWords; let i = index"
+              (click)="checkCorrection(i)"
+              class="word-btn">
+        {{ w }}
+      </button>
+    </div>
+    <p class="feedback">{{ result }}</p>
+  </div>
+</div>
