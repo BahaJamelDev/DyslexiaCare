@@ -1,0 +1,10 @@
+Flask
+Flask-Cors
+pandas
+Pillow
+textblob
+language_tool_python
+eng_to_ipa
+abydos
+azure-cognitiveservices-vision-computervision
+msrest

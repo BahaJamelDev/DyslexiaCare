@@ -15,9 +15,9 @@ import  {RegistrationComponent } from './app/components/registration/registratio
 import { ExercicesComponent } from './app/components/exercices/exercices.component';
 import { LoginComponent } from './app/components/login/login.component';
 import { DyslexiaTestComponent } from './app/components/dyslexia-test/dyslexia-test.component';
+import {DictationComponent} from "./app/components/dictation/dictation.component";
 import { provideHttpClient } from '@angular/common/http';
-
-
+import {DyslexiaServicesComponent} from "./app/components/dyslexia-service/dyslexia-service.component";
 
 
 if (environment.production) {
@@ -26,36 +26,38 @@ if (environment.production) {
 
 platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.error(err));
-  
+
   bootstrapApplication(AppComponent, {
     providers: [
       provideRouter([
-        { 
-          path: '', 
+        {
+          path: '',
           component: AcceuilComponent
         },
         { path : 'home' ,
           component : HomeComponent
         },
-        { 
-          path: 'a-propos', 
-          component: AProposComponent 
+        {
+          path: 'a-propos',
+          component: AProposComponent
         },
-        { path : 'contact' , 
+        { path : 'contact' ,
           component : ContactComponent
         } ,
         {path : 'register' ,
           component :  RegistrationComponent
-         
-        } , 
+
+        } ,
         { path : 'exercice' ,
           component : ExercicesComponent
-        } , 
+        } ,
         {
           path : 'login' , component : LoginComponent
         } ,
-        {path : 'test' ,component : DyslexiaTestComponent} 
-       
+        {path : 'test' ,component : DyslexiaTestComponent}  ,
+        {path : 'dictation' , component : DictationComponent},
+        {path : 'services' , component : DyslexiaServicesComponent}
+
       ]),
       provideHttpClient()
     ]

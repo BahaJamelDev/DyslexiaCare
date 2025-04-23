@@ -1,0 +1,178 @@
+/* dyslexia-services.component.css */
+.dyslexia-services {
+  font-family: 'OpenDyslexic', Arial, sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #f0f4f8;
+  color: #2c3e50;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 3rem 2rem;
+  background: linear-gradient(135deg, #e6f2ff 0%, #d1e8ff 100%);
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+header h1 {
+  color: #2c3e50;
+  margin: 0;
+  font-size: 3rem;
+}
+
+header p {
+  color: #34495e;
+  font-size: 1.5rem;
+  margin-top: 1rem;
+}
+
+.services-description {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.services-description h2 {
+  color: #2c3e50;
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+}
+
+.services-description p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: #34495e;
+}
+
+.service-options {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.service-card {
+  flex: 1;
+  background-color: white;
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0,0,0,0.15);
+}
+
+.service-card.selected {
+  border-color: #3498db;
+  background-color: #e6f2ff;
+}
+
+.service-icon {
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #3498db;
+}
+
+.service-card h3 {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #2c3e50;
+}
+
+.service-card p {
+  font-size: 1.1rem;
+  text-align: center;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+  color: #34495e;
+}
+
+.service-select {
+  text-align: center;
+}
+
+.service-select input[type="radio"] {
+  display: none;
+}
+
+.service-select label {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  background-color: #ecf0f1;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 1.1rem;
+}
+
+.selected .service-select label {
+  background-color: #3498db;
+  color: white;
+}
+
+.action-button {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.action-button button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 10px rgba(52, 152, 219, 0.4);
+}
+
+.action-button button:hover {
+  background-color: #2980b9;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .service-options {
+    flex-direction: column;
+  }
+
+  .service-card {
+    margin-bottom: 1.5rem;
+  }
+
+  header h1 {
+    font-size: 2.5rem;
+  }
+
+  header p {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+    padding: 2rem 1rem;
+  }
+
+  header h1 {
+    font-size: 2rem;
+  }
+
+  .services-description h2 {
+    font-size: 1.8rem;
+  }
+
+  .service-card h3 {
+    font-size: 1.5rem;
+  }
+}

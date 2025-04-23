@@ -1,0 +1,54 @@
+<!-- dyslexia-services.component.html -->
+<div class="dyslexia-services">
+  <header>
+    <h1>DyslexiaCare</h1>
+    <p>Solutions professionnelles pour la détection de la dyslexie</p>
+  </header>
+
+  <div class="services-description">
+    <h2>Nos Services</h2>
+    <p>
+      Chez DyslexiaCare, nous proposons des outils spécialisés pour détecter
+      la dyslexie et aider votre enfant à développer ses compétences.
+      Choisissez l'un de nos services ci-dessous:
+    </p>
+  </div>
+
+  <div class="service-options">
+    <div class="service-card" [class.selected]="selectedService === 'dictation'" (click)="selectService('dictation')">
+      <div class="service-icon">
+        <i class="fas fa-microphone"></i>
+      </div>
+      <h3>Test de Dictée</h3>
+      <p>
+        Un test de dictée adapté pour détecter les signes de dyslexie
+        chez votre enfant. Idéal pour évaluer les compétences d'orthographe
+        et l'identification des sons.
+      </p>
+      <div class="service-select">
+        <input type="radio" name="service" id="dictation" [checked]="selectedService === 'dictation'">
+        <label for="dictation">Sélectionner</label>
+      </div>
+    </div>
+
+    <div class="service-card" [class.selected]="selectedService === 'writing'" (click)="selectService('writing')">
+      <div class="service-icon">
+        <i class="fas fa-pen"></i>
+      </div>
+      <h3>Analyse d'Écriture</h3>
+      <p>
+        Téléchargez des échantillons d'écriture de votre enfant pour
+        une analyse professionnelle qui identifie les indicateurs
+        potentiels de dyslexie.
+      </p>
+      <div class="service-select">
+        <input type="radio" name="service" id="writing" [checked]="selectedService === 'writing'">
+        <label for="writing">Sélectionner</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="action-button" *ngIf="selectedService">
+    <button (click)="startTest()">Commencer avec {{ selectedService === 'dictation' ? 'le Test de Dictée' : 'l\'Analyse d\'Écriture' }}</button>
+  </div>
+</div>

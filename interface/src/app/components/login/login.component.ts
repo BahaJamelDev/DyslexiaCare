@@ -8,7 +8,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   standalone : true ,
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'] , 
+  styleUrls: ['./login.component.css'] ,
   imports : [CommonModule, ReactiveFormsModule, RouterModule ]
 })
 export class LoginComponent {
@@ -36,8 +36,9 @@ export class LoginComponent {
     if (error) {
       this.errorMessage = error.message;
     } else {
-      this.router.navigate(['/test']);
+      await this.router.navigate(['/services']);
     }
   }
-  
+
+
 }

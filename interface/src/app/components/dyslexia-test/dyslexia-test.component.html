@@ -1,124 +1,54 @@
-<!-- dyslexia-test.component.html -->
-<div class="dyslexia-test-container">
-  <div class="card">
-    <div class="card-header">
-      <h2>Test de détection de dyslexie</h2>
-      <p class="lead">Téléchargez une image d'écriture manuscrite pour analyser les signes potentiels de dyslexie</p>
+<div class="homepage-container">
+  <div class="hero-section">
+    <div class="hero-content">
+      <h1>🧠 Analyse d'Écriture</h1>
+      <p>Téléchargez un échantillon d'écriture pour détecter d'éventuels signes de dyslexie</p>
     </div>
-    
-    <div class="card-body">
-      <div class="upload-section">
-        <div class="form-group">
-          <label for="handwritingImage">Sélectionnez une image d'écriture manuscrite</label>
-          <input 
-            type="file" 
-            id="handwritingImage" 
-            class="form-control" 
-            accept="image/*" 
-            (change)="onFileSelected($event)"
-            [disabled]="isAnalyzing">
-          <small class="form-text text-muted">Pour de meilleurs résultats, utilisez une image claire de l'écriture manuscrite.</small>
-        </div>
-        
-        <div class="preview-container" *ngIf="previewUrl">
-          <h4>Prévisualisation</h4>
-          <img [src]="previewUrl" alt="Prévisualisation de l'écriture manuscrite" class="img-fluid">
-        </div>
-        
-        <div class="action-buttons">
-          <button 
-            class="btn btn-primary" 
-            (click)="analyzeHandwriting()" 
-            [disabled]="!selectedFile || isAnalyzing">
-            <span *ngIf="isAnalyzing">
-              <i class="fas fa-spinner fa-spin"></i> Analyse en cours...
-            </span>
-            <span *ngIf="!isAnalyzing">
-              Analyser l'écriture
-            </span>
-          </button>
-          
-          <button 
-            class="btn btn-secondary ms-2" 
-            (click)="resetTest()" 
-            [disabled]="isAnalyzing">
-            Réinitialiser
-          </button>
-        </div>
+  </div>
+
+  <div class="upload-section">
+    <div class="upload-container">
+      <label for="file-upload" class="file-upload-label">
+        <span>Sélectionner une image</span>
+      </label>
+      <input id="file-upload" type="file" (change)="onFileSelected($event)" accept="image/*" class="file-input" />
+    </div>
+
+    <div *ngIf="error" class="error-message">⚠️ {{ error }}</div>
+
+    <div *ngIf="result" class="features">
+      <div class="feature">
+        <h3>Précision Orthographique</h3>
+        <p class="result-value">{{ result.features[0] | number:'1.2-2' }}%</p>
       </div>
-      
-      <div class="results-section" *ngIf="result">
-        <h3>Résultats de l'analyse</h3>
-        
-        <div class="result-card" [ngClass]="getSeverityClass()">
-          <div class="result-header">
-            <h4>Niveau de risque de dyslexie: <span>{{ result.severity }}</span></h4>
-          </div>
-          
-          <div class="result-body">
-            <div class="probability-meter">
-              <div class="progress">
-                <div 
-                  class="progress-bar" 
-                  role="progressbar" 
-                  [style.width.%]="result.probability * 100" 
-                  [attr.aria-valuenow]="result.probability * 100" 
-                  aria-valuemin="0" 
-                  aria-valuemax="100">
-                  {{ (result.probability * 100).toFixed(1) }}%
-                </div>
-              </div>
-            </div>
-            
-            <div class="extracted-text mt-3" *ngIf="extractedText">
-              <h5>Texte extrait:</h5>
-              <div class="text-box">{{ extractedText }}</div>
-            </div>
-            
-            <div class="result-details mt-3">
-              <p>Date de l'analyse: {{ result.timestamp | date:'medium' }}</p>
-              
-              <button class="btn btn-outline-info btn-sm" (click)="toggleDetails()">
-                {{ showDetails ? 'Masquer les détails' : 'Afficher les détails techniques' }}
-              </button>
-              
-              <div class="technical-details mt-3" *ngIf="showDetails">
-                <h5>Détails techniques de l'analyse:</h5>
-                <ul class="list-group">
-                  <li class="list-group-item" *ngFor="let feature of ['spelling_accuracy', 'grammatical_accuracy', 'percentage_of_corrections', 'percentage_of_phonetic_accuracy']">
-                    <div class="d-flex justify-content-between align-items-center">
-                      <span>{{ feature.replace('_', ' ') | titlecase }}</span>
-                      <span class="badge bg-primary rounded-pill">{{ result.features[feature].toFixed(2) }}</span>
-                    </div>
-                    <small class="text-muted">{{ getFeatureDescription(feature) }}</small>
-                  </li>
-                </ul>
-              </div>
-              
-              <div class="recommendations mt-3" *ngIf="result.severity !== 'Aucune'">
-                <h5>Recommandations:</h5>
-                <ul class="list-group">
-                  <li class="list-group-item" *ngIf="result.severity === 'Légère'">
-                    Envisagez de faire des exercices réguliers pour renforcer les compétences en lecture et écriture.
-                  </li>
-                  <li class="list-group-item" *ngIf="result.severity === 'Légère' || result.severity === 'Modérée' || result.severity === 'Élevée'">
-                    Pratiquez des exercices de conscience phonologique pour améliorer la perception des sons.
-                  </li>
-                  <li class="list-group-item" *ngIf="result.severity === 'Modérée'">
-                    Consultez un orthophoniste pour une évaluation plus approfondie et des exercices adaptés.
-                  </li>
-                  <li class="list-group-item" *ngIf="result.severity === 'Modérée' || result.severity === 'Élevée'">
-                    Utilisez des outils d'aide à la lecture comme les polices adaptées à la dyslexie.
-                  </li>
-                  <li class="list-group-item" *ngIf="result.severity === 'Élevée'">
-                    Il est fortement recommandé de consulter un spécialiste en dyslexie pour un diagnostic complet.
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
+
+      <div class="feature">
+        <h3>Précision Grammaticale</h3>
+        <p class="result-value">{{ result.features[1] | number:'1.2-2' }}%</p>
       </div>
+
+      <div class="feature">
+        <h3>Pourcentage de Corrections</h3>
+        <p class="result-value">{{ result.features[2] | number:'1.2-2' }}%</p>
+      </div>
+    </div>
+
+    <div *ngIf="result" class="phonetic-section">
+      <div class="feature">
+        <h3>Précision Phonétique</h3>
+        <p class="result-value">{{ result.features[3] | number:'1.2-2' }}%</p>
+      </div>
+    </div>
+
+    <div *ngIf="result" class="prediction-section"
+         [ngClass]="{'prediction-safe': result.prediction[0]===1, 'prediction-warning': result.prediction[0]===0}">
+      <h2>{{ result.prediction[0] === 1 ? '✅ Aucun signe de dyslexie détecté' : '⚠️ Signes possibles de dyslexie détectés' }}</h2>
+    </div>
+
+    <div class="action-buttons">
+      <button *ngIf="result" (click)="result=null" class="cta-button">Essayer une autre image</button>
+      <button routerLink="/dictation-test" routerLinkActive="active" class="cta-button">➡️ Aller au Test de Dictée</button>
+      <button routerLink="/services" class="cta-button secondary">Retour aux Services</button>
     </div>
   </div>
 </div>

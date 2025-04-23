@@ -1,0 +1,30 @@
+<div class="dictation-wrapper">
+  <h2>🗣️ Dictation Exercise</h2>
+
+  <button class="primary-btn" (click)="startDictation()" [disabled]="speaking">
+    Start Dictation
+  </button>
+
+  <p *ngIf="statusMessage" class="status-message">{{ statusMessage }}</p>
+
+  <p *ngIf="currentWordIndex >= 0 && speaking" class="word-progress">
+    🔊 Word {{ currentWordIndex + 1 }} of {{ words.length }} being read...
+  </p>
+
+  <div *ngIf="words.length > 0 && !speaking" class="form-section">
+    <h4>✍️ Type the words you heard:</h4>
+    <div class="inputs">
+      <input
+        *ngFor="let input of inputs; let i = index"
+        [(ngModel)]="inputs[i]"
+        [placeholder]="'Word ' + (i + 1)" />
+    </div>
+
+    <button class="primary-btn" (click)="submit()">Submit</button>
+  </div>
+
+  <div *ngIf="score !== null" class="score-box">
+    <h3>🧠 Levenshtein Score: {{ score }}</h3>
+    <p>(Lower score = better accuracy)</p>
+  </div>
+</div>

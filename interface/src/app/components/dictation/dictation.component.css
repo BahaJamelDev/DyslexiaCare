@@ -1,0 +1,98 @@
+.dictation-wrapper {
+  max-width: 800px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+  font-family: 'Open Sans', Arial, sans-serif;
+}
+
+h2 {
+  text-align: center;
+  color: #3498db;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.status-message {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #2c3e50;
+  margin: 1.5rem 0;
+  font-weight: 600;
+}
+
+.word-progress {
+  text-align: center;
+  color: #e67e22;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.inputs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+input {
+  padding: 0.75rem;
+  font-size: 1rem;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  transition: 0.3s;
+}
+
+input:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+  outline: none;
+}
+
+.primary-btn {
+  background-color: #3498db;
+  color: white;
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  display: inline-block;
+  transition: background-color 0.3s ease, transform 0.2s;
+  margin: 1rem 0;
+}
+
+.primary-btn:hover {
+  background-color: #2980b9;
+  transform: scale(1.03);
+}
+
+.primary-btn:disabled {
+  background-color: #bdc3c7;
+  cursor: not-allowed;
+}
+
+.score-box {
+  background-color: #ecf0f1;
+  border-left: 6px solid #2ecc71;
+  padding: 1.5rem;
+  margin-top: 2rem;
+  text-align: center;
+  border-radius: 12px;
+  font-size: 1.2rem;
+  color: #2c3e50;
+}
+
+@media (max-width: 768px) {
+  .inputs {
+    grid-template-columns: 1fr;
+  }
+
+  .primary-btn {
+    width: 100%;
+    text-align: center;
+  }
+}

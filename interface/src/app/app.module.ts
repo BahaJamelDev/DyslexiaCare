@@ -1,6 +1,6 @@
 import { NgModule,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ReactiveFormsModule } from '@angular/forms'; // 📌 Importer ReactiveFormsModule
+import {FormsModule, ReactiveFormsModule} from '@angular/forms'; // 📌 Importer ReactiveFormsModule
 import { AppRoutingModule } from './app-routing.module';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -8,6 +8,9 @@ import { routes }  from 'src/app/app-routing.module';
 import { RouterModule } from '@angular/router';
 import { provideRouter } from '@angular/router';
 import { AppComponent } from './app.component';
+import {HttpClientModule} from "@angular/common/http";
+import { DictationComponent } from './components/dictation/dictation.component';
+
 
 
 
@@ -15,11 +18,13 @@ import { AppComponent } from './app.component';
   declarations: [
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     RouterModule.forRoot(routes),
     AppRoutingModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     ToastrModule.forRoot({
       positionClass: 'toast-top-right',
       preventDuplicates: true,
@@ -27,8 +32,9 @@ import { AppComponent } from './app.component';
       progressBar: true,
       timeOut: 5000,
       progressAnimation: 'increasing'
-    })
-    
+    }),
+    FormsModule
+
   ],
   providers: [],
   bootstrap: []

@@ -9,6 +9,8 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { ExercicesComponent } from './components/exercices/exercices.component';
 import { LoginComponent } from './components/login/login.component';
 import { DyslexiaTestComponent } from './components/dyslexia-test/dyslexia-test.component';
+import {DictationComponent} from "./components/dictation/dictation.component";
+import {DyslexiaServicesComponent} from "./components/dyslexia-service/dyslexia-service.component";
 
 
 export const routes: Routes = [
@@ -16,10 +18,12 @@ export const routes: Routes = [
   {path : 'home' , component : HomeComponent},
   { path: 'a-propos', component: AProposComponent },
   {path : 'contact' , component : ContactComponent} ,
-  {path : 'register' , component : RegistrationComponent}, 
-  {path : 'exercice' , component : ExercicesComponent} , 
+  {path : 'register' , component : RegistrationComponent},
+  {path : 'exercice' , component : ExercicesComponent} ,
   {path : 'login' , component : LoginComponent} ,
-  {path : 'test' , component:DyslexiaTestComponent}
+  {path : 'test' , component:DyslexiaTestComponent},
+  {path:'dictation' , component :DictationComponent} ,
+  {path : 'services', component:DyslexiaServicesComponent}
 ];
 
 @NgModule({
