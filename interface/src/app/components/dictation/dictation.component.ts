@@ -1,4 +1,4 @@
-import  { Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { DictationService } from 'src/app/services/dictation.service';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -12,24 +12,24 @@ import { FormsModule } from '@angular/forms';
   imports: [CommonModule, RouterModule, FormsModule]
 })
 export class DictationComponent {
-  words: string[] = [];           // will hold real words once loaded
-  inputs: string[] = [];          // always 10 slots
+  words: string[] = [];           // contiendra les vrais mots une fois chargés
+  inputs: string[] = [];          // toujours 10 cases
   score: number | null = null;
   statusMessage = '';
 
   constructor(private dictationService: DictationService) {}
 
   startDictation() {
-    // 1) Prepare a 10-row table immediately
+    // 1) Préparer immédiatement un tableau de 10 lignes
     this.inputs = new Array(10).fill('');
-    this.words  = new Array(10).fill('');   // placeholders so readWords can still index
+    this.words  = new Array(10).fill('');   // des espaces réservés pour permettre l’indexation par readWords
     this.score = null;
-    this.statusMessage = '🔄 Loading words… (table ready, start typing!)';
+    this.statusMessage = '🔄 Chargement des mots… (table prête, commencez à écrire !)';
 
-    // 2) Fetch the real words
+    // 2) Récupérer les vrais mots
     this.dictationService.getWords().subscribe(res => {
-      this.words = res.words;               // assume length 10
-      this.statusMessage = '✅ Dictation in progress…';
+      this.words = res.words;               // on suppose une longueur de 10
+      this.statusMessage = '✅ Dictée en cours…';
       this.readWords();
     });
   }
@@ -39,12 +39,12 @@ export class DictationComponent {
       this.speak(this.words[i]);
       await this.delay(5000);
     }
-    this.statusMessage = '✅ Dictation complete. Review & submit when ready.';
+    this.statusMessage = '✅ Dictée terminée. Vérifiez et soumettez quand vous êtes prêt.';
   }
 
   speak(text: string) {
     const msg = new SpeechSynthesisUtterance(text);
-    msg.lang = 'en-GB';
+    msg.lang = 'fr-FR';
     msg.rate = 0.8;
     speechSynthesis.speak(msg);
   }
@@ -54,21 +54,22 @@ export class DictationComponent {
   }
 
   submit() {
-  this.dictationService.submitDictation(this.words, this.inputs)
-    .subscribe(_ => {
-      // 1) Count exact matches (case-sensitive; for case-insensitive use .toLowerCase())
-      let correctCount: number;
-      correctCount = this.words
-        .map((w, i) => w === this.inputs[i])
-        .filter(isCorrect => isCorrect).length;
+    this.dictationService.submitDictation(this.words, this.inputs)
+      .subscribe(_ => {
+        // 1) Compter les correspondances exactes (sensible à la casse ; pour ignorer la casse utiliser .toLowerCase())
+        let correctCount: number;
+        correctCount = this.words
+          .map((w, i) => w === this.inputs[i])
+          .filter(isCorrect => isCorrect).length;
 
-      // 2) Assign that count directly as your score (0–10)
-      this.score = correctCount;
+        // 2) Attribuer ce nombre directement comme score (0–10)
+        this.score = correctCount;
 
-      this.statusMessage = '✅ Test complete. Your score is ready.';
-    });
-}
-  // trackBy to keep Angular from ever re-creating rows
+        this.statusMessage = '✅ Test terminé. Votre score est prêt.';
+      });
+  }
+
+  // trackBy pour éviter qu'Angular ne recrée les lignes inutilement
   trackByIndex(i: number) {
     return i;
   }

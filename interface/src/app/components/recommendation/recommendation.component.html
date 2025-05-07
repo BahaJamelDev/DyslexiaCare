@@ -1,18 +1,18 @@
 <div class="exercise-page">
-  <h2>🧠 Practice Exercises</h2>
-  <p>Select one:</p>
+  <h2>🧠 Exercices pratiques</h2>
+  <p>Choisissez un mode :</p>
 
-  <!-- MODE BUTTONS -->
+  <!-- BOUTONS DE MODE -->
   <div class="btn-group">
-    <button (click)="start('spelling')"   class="primary-btn">Spelling</button>
-    <button (click)="start('grammar')"    class="primary-btn">Grammar</button>
-    <button (click)="start('correction')" class="primary-btn">Self-Correct</button>
+    <button (click)="start('spelling')"   class="primary-btn">Orthographe</button>
+    <button (click)="start('grammar')"    class="primary-btn">Grammaire</button>
+    <button (click)="start('correction')" class="primary-btn">Auto-correction</button>
   </div>
   <hr />
 
-  <!-- WHEN A MODE IS ACTIVE -->
+  <!-- LORSQU'UN MODE EST ACTIF -->
   <div *ngIf="mode">
-    <!-- TYPE BUTTONS -->
+    <!-- BOUTONS DE TYPE D'EXERCICE -->
     <div class="btn-group type-group">
       <button
         *ngFor="let ex of exercises[mode]; let i = index"
@@ -24,25 +24,25 @@
       </button>
     </div>
 
-    <!-- PROGRESS TRACKER -->
+    <!-- SUIVI DE PROGRÈS -->
     <p class="tracker">
       Type {{ typeIndex + 1 }} / {{ totalTypes }} —
-      Example {{ exampleIndex + 1 }} / {{ totalExamples }}
+      Exemple {{ exampleIndex + 1 }} / {{ totalExamples }}
     </p>
 
     <div class="exercise-block">
-      <!-- SWITCH BY EXERCISE TYPE -->
+      <!-- AFFICHAGE SELON LE TYPE D'EXERCICE -->
       <ng-container [ngSwitch]="currentExercise.type">
-        <!-- Unscramble -->
+        <!-- Remettre en ordre -->
         <div *ngSwitchCase="'unscramble'">
-          <p>{{ currentExercise.title }}:</p>
+          <p>{{ currentExercise.title }} :</p>
           <h3>{{ currentExample.scrambled }}</h3>
-          <input [(ngModel)]="userInput" placeholder="Type here" />
+          <input [(ngModel)]="userInput" placeholder="Tapez votre réponse ici" />
         </div>
 
-        <!-- Multiple-Choice -->
+        <!-- Choix multiples -->
         <div *ngSwitchCase="'multipleChoice'">
-          <p>{{ currentExercise.title }}:</p>
+          <p>{{ currentExercise.title }} :</p>
           <div *ngFor="let opt of currentExample.options">
             <label>
               <input
@@ -56,29 +56,26 @@
           </div>
         </div>
 
-        <!-- Fill-Blank -->
+        <!-- Remplir les blancs -->
         <div *ngSwitchCase="'fillBlank'">
-          <p>{{ currentExercise.title }}:</p>
+          <p>{{ currentExercise.title }} :</p>
           <p class="blank">{{ currentExample.template }}</p>
-          <input [(ngModel)]="userInput" placeholder="Fill in" />
+          <input [(ngModel)]="userInput" placeholder="Complétez ici" />
         </div>
 
-        <!-- Fix Sentence -->
+        <!-- Corriger la phrase -->
         <div *ngSwitchCase="'fixSentence'">
-          <p>{{ currentExercise.title }}:</p>
+          <p>{{ currentExercise.title }} :</p>
           <blockquote>{{ currentExample.original }}</blockquote>
-          <input [(ngModel)]="userInput" placeholder="Your correction" />
+          <input [(ngModel)]="userInput" placeholder="Votre correction" />
         </div>
 
-        <!-- Identify Wrong Word -->
+        <!-- Trouver le mot incorrect -->
         <div *ngSwitchCase="'identifyWrongWord'">
-          <p>{{ currentExercise.title }}:</p>
+          <p>{{ currentExercise.title }} :</p>
           <div class="word-list">
             <button
-              *ngFor="
-                let w of currentExample.sentenceWords;
-                let idx = index
-              "
+              *ngFor="let w of currentExample.sentenceWords; let idx = index"
               (click)="checkClick(idx)"
               class="word-btn"
             >
@@ -87,9 +84,9 @@
           </div>
         </div>
 
-        <!-- Choose the Correct Word -->
+        <!-- Choisir le bon mot -->
         <div *ngSwitchCase="'chooseWord'">
-          <p>{{ currentExercise.title }}:</p>
+          <p>{{ currentExercise.title }} :</p>
           <p>{{ currentExample.sentenceTemplate }}</p>
           <div *ngFor="let opt of currentExample.options">
             <label>
@@ -104,15 +101,12 @@
           </div>
         </div>
 
-        <!-- Click Incorrect Spelling -->
+        <!-- Cliquer sur la mauvaise orthographe -->
         <div *ngSwitchCase="'clickSpelling'">
-          <p>{{ currentExercise.title }}:</p>
+          <p>{{ currentExercise.title }} :</p>
           <div class="word-list">
             <button
-              *ngFor="
-                let w of currentExample.sentenceWords;
-                let idx = index
-              "
+              *ngFor="let w of currentExample.sentenceWords; let idx = index"
               (click)="checkClick(idx)"
               class="word-btn"
             >
@@ -121,22 +115,19 @@
           </div>
         </div>
 
-        <!-- Rewrite Sentence -->
+        <!-- Réécrire la phrase -->
         <div *ngSwitchCase="'rewriteSentence'">
-          <p>{{ currentExercise.title }}:</p>
+          <p>{{ currentExercise.title }} :</p>
           <blockquote>{{ currentExample.original }}</blockquote>
-          <input [(ngModel)]="userInput" placeholder="Rewrite here" />
+          <input [(ngModel)]="userInput" placeholder="Réécrivez ici" />
         </div>
 
-        <!-- Click Wrong Homophone -->
+        <!-- Cliquer sur l'homophone incorrect -->
         <div *ngSwitchCase="'clickHomophone'">
-          <p>{{ currentExercise.title }}:</p>
+          <p>{{ currentExercise.title }} :</p>
           <div class="word-list">
             <button
-              *ngFor="
-                let w of currentExample.sentenceWords;
-                let idx = index
-              "
+              *ngFor="let w of currentExample.sentenceWords; let idx = index"
               (click)="checkClick(idx)"
               class="word-btn"
             >
@@ -146,28 +137,24 @@
         </div>
       </ng-container>
 
-      <!-- CHECK BUTTON (for non-click types) -->
+      <!-- BOUTON VÉRIFIER (pour les types non-cliquables) -->
       <button
-        *ngIf="
-          ['unscramble','multipleChoice','fillBlank','fixSentence',
-           'chooseWord','rewriteSentence']
-            .includes(currentExercise.type)
-        "
+        *ngIf="['unscramble','multipleChoice','fillBlank','fixSentence','chooseWord','rewriteSentence'].includes(currentExercise.type)"
         class="primary-btn"
         (click)="checkAnswer()"
       >
-        Check
+        Vérifier
       </button>
 
       <p class="feedback">{{ result }}</p>
 
-      <!-- NEXT EXAMPLE -->
+      <!-- EXEMPLE SUIVANT -->
       <button
         *ngIf="exampleIndex < totalExamples - 1"
         class="primary-btn small"
         (click)="nextExample()"
       >
-        Next Example
+        Exemple suivant
       </button>
     </div>
   </div>

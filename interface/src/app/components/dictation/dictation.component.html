@@ -1,15 +1,15 @@
 <div class="container">
-  <h2>📝 Dictation Practice</h2>
+  <h2>📝 Test de Dictée</h2>
   <p>{{ statusMessage }}</p>
 
-  <button (click)="startDictation()">▶️ Start Dictation</button>
+  <button (click)="startDictation()">▶️ Commencer la Dictée</button>
 
   <form *ngIf="inputs.length" (ngSubmit)="submit()" class="dictation-form">
     <table>
       <thead>
         <tr>
           <th>#</th>
-          <th>Your Answer</th>
+          <th>Votre réponse</th>
         </tr>
       </thead>
       <tbody>
@@ -18,7 +18,7 @@
         >
           <td>{{ i + 1 }}</td>
           <td>
-            <!-- Always editable -->
+            <!-- Toujours éditable -->
             <input
               [(ngModel)]="inputs[i]"
               name="input{{i}}"
@@ -29,10 +29,10 @@
       </tbody>
     </table>
 
-    <button type="submit" [disabled]="score !== null">✅ Submit</button>
+    <button type="submit" [disabled]="score !== null">✅ Soumettre</button>
   </form>
 
   <div *ngIf="score !== null" class="result">
-    <h3>🎯 Your Score: {{ score }} / {{ words.length }}</h3>
+    <h3>🎯 Résultat : {{ score }} / {{ words.length }}</h3>
   </div>
 </div>

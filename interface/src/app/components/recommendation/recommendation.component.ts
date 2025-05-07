@@ -15,20 +15,13 @@ type ExerciseType =
   | 'clickHomophone';
 
 interface Example {
-  // Unscramble / Fill-Blank
   scrambled?: string;
   template?: string;
   word?: string;
-
-  // Multiple-Choice / ChooseWord
   options?: string[];
-  correct?: string;
   sentenceTemplate?: string;
-
-  // Fix / Rewrite
   original?: string;
-
-  // Click-type
+  correct?: string;
   sentenceWords?: string[];
   wrongIndex?: number;
 }
@@ -51,44 +44,42 @@ interface ExerciseSet {
   imports: [CommonModule, RouterModule, FormsModule]
 })
 export class RecommendationComponent {
-  // --- UI State ---
   mode: 'spelling' | 'grammar' | 'correction' | '' = '';
-  typeIndex = 0;        // which of the 3 types
-  exampleIndex = 0;     // which of the 2 examples
+  typeIndex = 0;
+  exampleIndex = 0;
   userInput = '';
   result = '';
 
-  // --- All 9 × 2 = 18 Exercises ---
   exercises: ExerciseSet = {
     spelling: [
       {
         type: 'unscramble',
-        title: 'Unscramble the word',
+        title: 'Reconstituer le mot',
         examples: [
-          { scrambled: 'hlosco', word: 'school' },
-          { scrambled: 'ecaubse', word: 'because' }
+          { scrambled: 'écolle', word: 'école' },
+          { scrambled: 'parceeuq', word: 'parceque' }
         ]
       },
       {
         type: 'multipleChoice',
-        title: 'Choose the correct spelling',
+        title: 'Choisir la bonne orthographe',
         examples: [
           {
-            options: ['definitely', 'definately', 'definetely'],
-            correct: 'definitely'
+            options: ['définitivement', 'définitivemment', 'definitivement'],
+            correct: 'définitivement'
           },
           {
-            options: ['separate', 'seperate', 'separat'],
-            correct: 'separate'
+            options: ['séparé', 'séparer', 'separer'],
+            correct: 'séparer'
           }
         ]
       },
       {
         type: 'fillBlank',
-        title: 'Fill in the missing letters',
+        title: 'Remplir les lettres manquantes',
         examples: [
-          { template: 'b_ca_e', word: 'because' },
-          { template: 'sch__l', word: 'school' }
+          { template: 'p_r_equ_', word: 'parceque' },
+          { template: 'c_l', word: 'école' }
         ]
       }
     ],
@@ -96,45 +87,45 @@ export class RecommendationComponent {
     grammar: [
       {
         type: 'fixSentence',
-        title: 'Fix the sentence',
+        title: 'Corriger la phrase',
         examples: [
           {
-            original: 'She go to school every day.',
-            correct: 'She goes to school every day.'
+            original: 'Elle aller à l’école chaque jour.',
+            correct: 'Elle va à l’école chaque jour.'
           },
           {
-            original: 'They was playing in the park.',
-            correct: 'They were playing in the park.'
+            original: 'Ils était au parc.',
+            correct: 'Ils étaient au parc.'
           }
         ]
       },
       {
         type: 'identifyWrongWord',
-        title: 'Identify the incorrect word',
+        title: 'Identifier le mot incorrect',
         examples: [
           {
-            sentenceWords: ['He', 'don’t', 'like', 'apples'],
-            wrongIndex: 1
+            sentenceWords: ['Il', 'ne', 'vas', 'pas', 'bien'],
+            wrongIndex: 2
           },
           {
-            sentenceWords: ['She', 'have', 'a', 'book.'],
+            sentenceWords: ['Elle', 'ont', 'un', 'chat.'],
             wrongIndex: 1
           }
         ]
       },
       {
         type: 'chooseWord',
-        title: 'Choose the correct word',
+        title: 'Choisir le bon mot',
         examples: [
           {
-            sentenceTemplate: 'She _ to school every day.',
-            options: ['go', 'goes'],
-            correct: 'goes'
+            sentenceTemplate: 'Elle _ à l’école chaque jour.',
+            options: ['va', 'vont'],
+            correct: 'va'
           },
           {
-            sentenceTemplate: 'They _ happy yesterday.',
-            options: ['was', 'were'],
-            correct: 'were'
+            sentenceTemplate: 'Ils _ contents hier.',
+            options: ['étaient', 'était'],
+            correct: 'étaient'
           }
         ]
       }
@@ -143,42 +134,42 @@ export class RecommendationComponent {
     correction: [
       {
         type: 'clickSpelling',
-        title: 'Click the incorrect spelling',
+        title: 'Cliquer sur la faute d’orthographe',
         examples: [
           {
-            sentenceWords: ['She', 'drinkz', 'water', 'daily.'],
+            sentenceWords: ['Elle', 'boi', 'de', 'l’eau.'],
             wrongIndex: 1
           },
           {
-            sentenceWords: ['I', 'walkd', 'home', 'yesterday.'],
+            sentenceWords: ['Je', 'marché', 'à', 'la', 'maison.'],
             wrongIndex: 1
           }
         ]
       },
       {
         type: 'rewriteSentence',
-        title: 'Rewrite the sentence correctly',
+        title: 'Réécrire la phrase correctement',
         examples: [
           {
-            original: 'He go to school.',
-            correct: 'He goes to school.'
+            original: 'Il aller à l’école.',
+            correct: 'Il va à l’école.'
           },
           {
-            original: 'They was here.',
-            correct: 'They were here.'
+            original: 'Nous était ici.',
+            correct: 'Nous étions ici.'
           }
         ]
       },
       {
         type: 'clickHomophone',
-        title: 'Click the wrong homophone',
+        title: 'Cliquer sur le mauvais homophone',
         examples: [
           {
-            sentenceWords: ['Their', 'going', 'to', 'the', 'park.'],
-            wrongIndex: 0
+            sentenceWords: ['C’est', 'leurs', 'amis.'],
+            wrongIndex: 1
           },
           {
-            sentenceWords: ['Its', 'a', 'good', 'day.'],
+            sentenceWords: ['Son', 'chat', 'est', 'gentil.'],
             wrongIndex: 0
           }
         ]
@@ -186,7 +177,6 @@ export class RecommendationComponent {
     ]
   };
 
-  // --- Mode & Type Selection ---
   start(mode: 'spelling' | 'grammar' | 'correction') {
     this.mode = mode;
     this.typeIndex = 0;
@@ -202,7 +192,6 @@ export class RecommendationComponent {
     this.result = '';
   }
 
-  // --- Navigation ---
   nextExample() {
     if (this.exampleIndex < this.currentExamples.length - 1) {
       this.exampleIndex++;
@@ -211,7 +200,6 @@ export class RecommendationComponent {
     }
   }
 
-  // --- Helpers & Getters ---
   get currentExercise(): Exercise {
     return this.exercises[this.mode]![this.typeIndex];
   }
@@ -228,7 +216,6 @@ export class RecommendationComponent {
     return this.currentExamples.length;
   }
 
-  // --- Answer Checking ---
   checkAnswer() {
     const ex = this.currentExample;
     let correct = false;
@@ -256,13 +243,13 @@ export class RecommendationComponent {
     }
 
     this.result = correct
-      ? '✅ Correct!'
-      : `❌ Try again. ,  Correct:  "${answerKey}" `;
+      ? '✅ Correct !'
+      : `❌ Réessaie. Réponse correcte : ${answerKey}`;
   }
 
   checkClick(idx: number) {
     const wrong = this.currentExample.wrongIndex!;
     this.result =
-      idx === wrong ? '✅ You spotted it!' : '❌ Nope, that one is fine.';
+      idx === wrong ? '✅ Bien vu !' : '❌ Non, ce mot est correct.';
   }
 }

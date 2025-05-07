@@ -16,6 +16,7 @@
 
     <div *ngIf="error" class="error-message">⚠️ {{ error }}</div>
 
+    <!-- Résultats -->
     <div *ngIf="result" class="features">
       <div class="feature">
         <h3>Précision Orthographique</h3>
@@ -40,16 +41,47 @@
       </div>
     </div>
 
+    <!-- Résultat prédictif -->
     <div *ngIf="result" class="prediction-section"
-         [ngClass]="{'prediction-safe': result.prediction[0]===1, 'prediction-warning': result.prediction[0]===0}">
-      <h2>{{ result.prediction[0] === 1 ? '✅ Aucun signe de dyslexie détecté' : '⚠️ Signes possibles de dyslexie détectés' }}</h2>
+         [ngClass]="{'prediction-safe': result.prediction[0] === 1, 'prediction-warning': result.prediction[0] === 0}">
+      <h2>
+        {{ result.prediction[0] === 1
+            ? '✅ Aucun signe de dyslexie détecté'
+            : '⚠️ Signes possibles de dyslexie détectés' }}
+      </h2>
     </div>
 
+    <!-- Bouton "Recommande-moi des exercices" -->
+    <div *ngIf="result && result.prediction[0] === 0 && !showRecommendations" class="action-buttons">
+      <button (click)="generateExerciseRecommendations()" class="cta-button">
+        📚 Recommande-moi des exercices
+      </button>
+    </div>
+
+    <!-- Exercices recommandés (avec liens cliquables) -->
+    <div *ngIf="showRecommendations && recommendedExercises.length" class="recommendations-block">
+      <h3>📘 Exercices recommandés :</h3>
+      <div *ngFor="let ex of recommendedExercises" class="feature">
+        <h4>
+          <a [routerLink]="['/recommendation']" [queryParams]="{ mode: ex.mode, type: ex.typeIndex }">
+            {{ ex.title }}
+          </a>
+        </h4>
+        <p>{{ ex.description }}</p>
+      </div>
+    </div>
+
+    <!-- Boutons d'action -->
     <div class="action-buttons">
-      <button *ngIf="result" (click)="result=null" class="cta-button">Essayer une autre image</button>
-      <button routerLink="/dictation" routerLinkActive="active" class="cta-button">➡️ Aller au Test de Dictée</button>
-      <button routerLink="/services" class="cta-button secondary">Retour aux Services</button>
-      <button routerLink="/recommendation" routerLinkActive="active" class="cta-button">Voir Exercices </button>
+      <button *ngIf="result" (click)="result = null; showRecommendations = false" class="cta-button">
+        Essayer une autre image
+      </button>
+      <button routerLink="/dictation" class="cta-button">
+        ➡️ Aller au Test de Dictée
+      </button>
+      <button routerLink="/services" class="cta-button secondary">
+        Retour aux Services
+      </button>
     </div>
   </div>
 </div>
